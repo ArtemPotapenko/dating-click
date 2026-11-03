@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="app-token" content="{{TOKEN}}">
+  <title>Dating Click — автономные лайки</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="/">dating<span>click</span><b>↗</b></a><span class="local"><i></i> На этом компьютере</span></header>
+  <main>
+    <div class="eyebrow">МЕНЬШЕ РУТИНЫ · БОЛЬШЕ ЗНАКОМСТВ</div>
+    <h1>Ты знакомишься.<br><span>Лайки — на автопилоте.</span></h1>
+    <p class="intro">Войди в аккаунт и открой ленту анкет. Дальше отдельный фоновый браузер продолжит ставить лайки — даже когда ты закроешь эту панель.</p>
+    <div class="steps"><span><b>01</b> Выбери платформу</span><span><b>02</b> Войди в аккаунт</span><span><b>03</b> Оставь работу фону</span></div>
+    <div id="error" role="alert" hidden></div>
+    <div class="section-line"><h2>Твои платформы</h2><span id="summary" aria-live="polite">Подключение…</span></div>
+    <div id="platforms" class="platforms"></div>
+    <aside><span class="aside-icon">↳</span><div><strong>Панель можно закрыть. Компьютер должен работать.</strong><p>Вход происходит в отдельном окне браузера на этом компьютере. Сессии хранятся локально. При проверке входа, недоступной кнопке или неизменившейся анкете процесс остановится.</p></div></aside>
+    <div class="section-line"><h2>Последние события</h2><span>Обновляются автоматически</span></div>
+    <div id="events" class="events" aria-live="polite"></div>
+  </main>
+  <footer><span>dating click</span><span>Локальный автопилот · Только лайки анкетам</span></footer>
+  <template id="card-template">
+    <article class="card">
+      <div class="card-top"><div class="platform-icon"></div><span class="status"></span></div>
+      <h3></h3><p class="message"></p>
+      <div class="metrics"><div><strong class="likes">0</strong><span>переходов после лайка</span></div><div><strong class="limit">100</strong><span>лимит попыток в день</span></div></div>
+      <div class="buttons"><button class="primary" data-action="login">Войти и запустить ↗</button><button class="secondary" data-action="resume">Продолжить</button><button class="stop" data-action="stop" hidden>Остановить</button></div>
+      <details><summary>Настройки <span>＋</span></summary>
+        <form>
+          <label>Адрес браузерного входа<input name="url" type="url" placeholder="https://…" required></label>
+          <div class="fields"><label>Пауза, секунды<input name="interval" type="number" min="5" max="3600" required></label><label>Попыток в день<input name="dailyLimit" type="number" min="1" max="10000" required></label></div>
+          <label>CSS кнопки лайка<input name="selector" placeholder="Автоматически или выбор при входе"></label>
+          <label>CSS контейнера анкеты<input name="cardSelector" placeholder="Автоопределение по фотографии"></label>
+          <p class="hint">Если кнопка не распознаётся, нажми «Выбрать кнопку лайка» в окне входа, затем укажи нужную кнопку. Этот клик не отправляется сайту.</p>
+          <button class="secondary" type="submit">Сохранить настройки</button><span class="saved" role="status"></span>
+        </form>
+      </details>
+    </article>
+  </template>
+</body>
+</html>
